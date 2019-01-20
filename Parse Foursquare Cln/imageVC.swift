@@ -7,24 +7,61 @@
 //
 
 import UIKit
+var globalName = ""
+var globalType = ""
+var globalAtmosphere = ""
+var globalImage = UIImage()
 
-class imageVC: UIViewController {
 
+
+class imageVC: UIViewController ,UIImagePickerControllerDelegate , UINavigationControllerDelegate{
+
+    @IBOutlet weak var placeAtmosphereText: UITextField!
+    @IBOutlet weak var placeTypeText: UITextField!
+    @IBOutlet weak var placeNameText: UITextField!
+    @IBOutlet weak var placeImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        placeImage.isUserInteractionEnabled = true
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageVC.selectImage))
+        placeImage.addGestureRecognizer(gestureRecognizer)
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        //her açıldığında o sayfa yani imageview ,text ,type atmosfer  boş açılsın.
+        globalName = ""
+        globalType = ""
+        globalAtmosphere = ""
+        globalImage = UIImage()
+    }
+    @objc func selectImage(){
+        let picker = UIImagePickerController()
+        picker.delegate = self // bizim view controllere güç ataması yaptık override edelim diye
+        picker.sourceType = .photoLibrary
+        picker.allowsEditing = true
+        self.present(picker, animated: true, completion: nil)
+    }
 
-        // Do any additional setup after loading the view.
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        placeImage.image = info[.editedImage] as! UIImage
+        self.dismiss(animated: true, completion: nil) //self view controllere değil pickere refer ediyor.pickeri dismis ediyoz
+        
+    }
+    @IBAction func nextClicked(_ sender: Any) {
+        if placeNameText.text != "" && placeTypeText.text != "" && placeAtmosphereText.text != "" { //içerikleri boş değilse
+            if let chosenImage = placeImage.image { //aynı zamanda resim varsa
+                globalName = placeNameText.text!
+                globalType = placeTypeText.text!
+                globalAtmosphere = placeAtmosphereText.text!
+                globalImage = chosenImage //tüm seçilenleri diğer sayfada kullanabilcez global sayesinde
+            }
+            
+        }
+        self.performSegue(withIdentifier: "fromimageVCtomapVC", sender: nil)
+        placeNameText.text = ""
+        placeTypeText.text = ""
+        placeAtmosphereText.text = ""
+        placeImage.image = UIImage(named: "select.png")
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

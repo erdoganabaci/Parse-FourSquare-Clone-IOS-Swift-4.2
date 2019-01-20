@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Parse
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -16,6 +16,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        
+        let myConfig = ParseClientConfiguration { (ParseMutableClientConfiguration) in
+            ParseMutableClientConfiguration.applicationId = "NgSm8O63Wda5JHiTPxrhDtDoatlRdM2YQ1yv0ldj"
+            ParseMutableClientConfiguration.clientKey = "kPrZnj9s3zgVSYJISZCZGFVnDAQLV85umMbtGKFT"
+            ParseMutableClientConfiguration.server = "https://parseapi.back4app.com"
+            
+            
+        }
+        
+        Parse.initialize(with: myConfig) //al benim configi parse başlat
+        
+        let defaultACL = PFACL() //acces level =ACL databasede veri yazıp silme yapıcaz.
+        defaultACL.hasPublicReadAccess = true
+        defaultACL.hasPublicWriteAccess = true
+        PFACL.setDefault(defaultACL, withAccessForCurrentUser: true) //tanımladığımız acl koyduk.
+        rememberLogIn() //burda ilk açılışta kontrol ettiriyoruz.
         return true
     }
 
@@ -40,7 +57,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    
+    func rememberLogIn(){
+        let user : String? = UserDefaults.standard.string(forKey: "userLoggedIn") //böyle birşey var mı bak varsa başlangıcı değiştir.
+        if user != nil {
+            let board : UIStoryboard = UIStoryboard(name: "Main", bundle: nil) //Main.storyboard tanımlanması
+            let navigationController = board.instantiateViewController(withIdentifier: "navigationVC") as! UINavigationController
+            window?.rootViewController = navigationController //uygulama açılış oku nu değiştirdik kullanıcı varsa onun storyboardını değiştirdik
+        }
+        
+    }
 
 }
 

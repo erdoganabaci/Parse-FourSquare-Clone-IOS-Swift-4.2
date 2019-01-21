@@ -23,9 +23,10 @@ class mapVC: UIViewController , MKMapViewDelegate , CLLocationManagerDelegate{ /
         manager.startUpdatingLocation()
         
         let recognizer = UILongPressGestureRecognizer(target: self, action: #selector(mapVC.chooseLocation(gestureRecognizer:)))
-        recognizer.minimumPressDuration = 2
+        recognizer.minimumPressDuration = 1
         mapView.addGestureRecognizer(recognizer )
-    
+        mapView.showsUserLocation = true
+        //mapView.mapType = .hybrid
     }
     override func viewWillAppear(_ animated: Bool) {
         //her açılışta bir önceki koordinatı kaydetmesin güvenlik için

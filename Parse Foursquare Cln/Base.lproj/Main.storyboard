@@ -99,7 +99,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Iw0-7H-K9s">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -143,7 +143,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iyQ-OU-xrU">
-                                <rect key="frame" x="0.0" y="64" width="375" height="203"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="203"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="203" id="1h7-uz-AcK"/>
                                     <constraint firstAttribute="width" constant="375" id="HO9-kT-Reu"/>
@@ -151,7 +151,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="placename" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VWC-0G-n6A">
-                                <rect key="frame" x="0.0" y="278" width="375" height="32"/>
+                                <rect key="frame" x="0.0" y="234" width="375" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="8XA-EP-OBZ"/>
                                 </constraints>
@@ -160,7 +160,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="placetype" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8QK-mk-Rc5">
-                                <rect key="frame" x="0.0" y="328" width="375" height="32"/>
+                                <rect key="frame" x="0.0" y="284" width="375" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="mha-iR-zve"/>
                                 </constraints>
@@ -169,7 +169,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="placeatmosphere" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lud-G0-wPO">
-                                <rect key="frame" x="0.0" y="376" width="375" height="32"/>
+                                <rect key="frame" x="0.0" y="332" width="375" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="y93-31-E8a"/>
                                 </constraints>
@@ -178,7 +178,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="r75-3o-lEG">
-                                <rect key="frame" x="0.0" y="417" width="375" height="250"/>
+                                <rect key="frame" x="0.0" y="373" width="375" height="294"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -202,6 +202,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pwn-Gf-XwZ"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="r75-3o-lEG" id="KpT-rR-Djd"/>
+                        <outlet property="placeAtmosphereLabel" destination="Lud-G0-wPO" id="uJN-X9-PQ7"/>
+                        <outlet property="placeImage" destination="iyQ-OU-xrU" id="WFl-Vx-rmO"/>
+                        <outlet property="placeName" destination="VWC-0G-n6A" id="DKT-98-Wxc"/>
+                        <outlet property="placeTypeLabel" destination="8QK-mk-Rc5" id="0je-km-w9j"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AFX-nC-EPY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -384,7 +391,6 @@
         <image name="select.png" width="292" height="189"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Zfq-mr-hPg"/>
         <segue reference="CRk-1b-bhn"/>
     </inferredMetricsTieBreakers>
 </document>

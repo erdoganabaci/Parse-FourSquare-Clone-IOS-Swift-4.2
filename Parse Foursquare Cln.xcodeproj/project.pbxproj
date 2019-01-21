@@ -77,11 +77,11 @@
 				2DFDF98821F0A61600212665 /* placesVC.swift */,
 				2DFDF98C21F0AA5E00212665 /* imageVC.swift */,
 				2DFDF98E21F0AB9100212665 /* mapVC.swift */,
+				2DFDF99021F0AD8300212665 /* detailsVC.swift */,
 				2DFDF97A21F0A43800212665 /* Main.storyboard */,
 				2DFDF97D21F0A43B00212665 /* Assets.xcassets */,
 				2DFDF97F21F0A43B00212665 /* LaunchScreen.storyboard */,
 				2DFDF98221F0A43B00212665 /* Info.plist */,
-				2DFDF99021F0AD8300212665 /* detailsVC.swift */,
 			);
 			path = "Parse Foursquare Cln";
 			sourceTree = "<group>";
